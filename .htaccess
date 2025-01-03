@@ -1,0 +1,14 @@
+<IfModule mod_mime.c>
+    AddEncoding gzip .gz
+    AddEncoding br .br
+    AddType application/javascript .js
+    AddType text/css .css
+    AddType application/json .json
+    AddType application/wasm .wasm
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(js|css|json|wasm)$">
+        Header set Content-Encoding gzip
+    </FilesMatch>
+</IfModule>
